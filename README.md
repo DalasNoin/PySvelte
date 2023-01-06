@@ -18,6 +18,12 @@ Install via
 pip install -e .
 ```
 
+Might be necessary to run
+```sh
+npm --prefix . install
+npx webpack
+```
+
 ## Set Up
 
 Many features in this library (such as publishing visualiations to GCS/S3/AZ buckets), require you to write several functions specific to your own research setup in `config.py`.

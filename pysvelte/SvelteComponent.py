@@ -173,6 +173,7 @@ class SvelteComponent:
             name = str(f).split("/src/")[1].replace("/main.svelte", "")
             components.append(SvelteComponent(name))
         for f in PYSVELTE_ROOT.glob("src/*.svelte"):
-            name = str(f).split("/src/")[1].replace(".svelte", "")
+            filepath = Path(f)
+            name = filepath.stem
             components.append(SvelteComponent(name))
         return components

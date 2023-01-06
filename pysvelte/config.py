@@ -19,7 +19,7 @@ def publish_default_root():
     `remote_path_to_url` functions below.
 
     """
-    return os.path.join(os.getenv("HOME"), ".cache", "pysvelte")
+    return os.path.join(os.path.expanduser("~"), ".cache", "pysvelte")
     # return "s3://your-vis-publication-bucket/"
 
 

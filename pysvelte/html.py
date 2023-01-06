@@ -212,9 +212,21 @@ class Html:
         Display in a notebook
         """
         try:
+            # check if we're in a notebook
+            if not get_ipython():
+                raise Exception("Not in a notebook")
+            
             # May not run outside of IPyton/Jupyter
             import IPython.display
 
             IPython.display.display(self)
-        except Exception:
-            print(self)
+        except: 
+            import tempfile
+            import webbrowser
+
+            html = self.html_page_str()
+
+            with tempfile.NamedTemporaryFile('w', delete=False, suffix='.html') as f:
+                url = 'file://' + f.name
+                f.write(html)
+            webbrowser.open(url)
